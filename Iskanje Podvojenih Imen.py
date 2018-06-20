@@ -1,7 +1,7 @@
 import csv
 
 def read_file(csv_file):
-    with open(csv_file, newline='', encoding= 'utf8' ) as csvfile:
+    with open(csv_file, newline='') as csvfile:
         file = csv.reader(csvfile, delimiter=';')
         word = []
         for row in file:
@@ -12,10 +12,15 @@ def get_duplicated_names():
     while True:
         try:
             data = read_file(input('Vnesi ime datoteke!\n'))
+            count = 0
             for i in range(len(data)):
-                if data[i] == data[i-1]:
-                    print('Artikel {}, ki se nahaja na mestu {} je podvojen'.format(data[i], i+1) )
+                if str(data[i]).upper() == str(data[i-1]).upper():
+                    count += 1
+                    print('Artikel {}, ki se nahaja na mestu {} je podvojen'.format(data[i], i+1))
+            if count == 0:
+                print('V datoteki ni podvojenih artiklov.')
             break
+
         except FileNotFoundError:
             print('Datoteka ne obstaja ali ni v isti mapi, kot program! Poizkusi ponovno.')
 
