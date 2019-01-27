@@ -22,6 +22,6 @@ def get_duplicated_names():
             break
 
         except FileNotFoundError:
-            print('Datoteka ne obstaja ali ni v isti mapi, kot program! Poiskusi ponovno.')
+            print('Datoteka ne obstaja ali ni v isti mapi, kot program! Poskusi ponovno.')
 
 get_duplicated_names()
